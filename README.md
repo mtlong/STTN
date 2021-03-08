@@ -9,31 +9,6 @@ Learning Joint Spatial-Temporal Transformations for Video Inpainting<br>
 In ECCV 2020.
 
 
-<!-- ---------------------------------------------- -->
-## Citation
-If any part of our paper and repository is helpful to your work, please generously cite with:
-```
-@inproceedings{yan2020sttn,
-  author = {Zeng, Yanhong and Fu, Jianlong and Chao, Hongyang,
-  title = {Learning Joint Spatial-Temporal
-Transformations for Video Inpainting},
-  booktitle = {The Proceedings of the European Conference on Computer Vision (ECCV)},
-  year = {2020}
-}
-```
-
-<!-- ---------------------------------------------- -->
-## Introduction 
-High-quality video inpainting that completes missing regions in video frames is a promising yet challenging task. 
-
-In this paper, we propose to learn a joint Spatial-Temporal Transformer Network (STTN) for video inpainting. Specifically, we simultaneously fill missing regions in all input frames by the proposed multi-scale patch-based attention modules. STTN is optimized by a spatial-temporal adversarial loss. 
-
-To show the superiority of the proposed model, we conduct both quantitative and qualitative evaluations by using standard stationary masks and more realistic moving object masks.
-
-![STTN](https://github.com/researchmm/STTN/blob/master/docs/sttn.png?raw=true)
-
-
-<!-- ---------------------------------------------- -->
 ## Installation  
 
 Clone this repo.
@@ -43,12 +18,22 @@ git clone git@github.com:researchmm/STTN.git
 cd STTN/
 ```
 
+**MTL Note**
+  - Installing with the provided environment.yml does not work for me. It's probably the issue with the different version of Ubuntu and packes.
+    - So first create a new conda environment (e.g. named `sttn`)
+    - Run the test script and install missing packes until it can run
+
+<details>
+
+  <summary> Original Instruction</summary>
 We build our project based on Pytorch and Python. For the full set of required Python packages, we suggest create a Conda environment from the provided YAML, e.g.
 
 ```
 conda env create -f environment.yml 
 conda activate sttn
 ```
+
+</details>
 
 <!-- ---------------------------------------------- -->
 ## Completing Videos Using Pretrained Model
@@ -65,8 +50,15 @@ python test.py --video examples/schoolgirls_orig.mp4 --mask examples/schoolgirls
 ```
 The outputs videos are saved at ```examples/```. 
 
+**MTL Notes**
+  - The provided code use GPU ID = 1 by default. That will cause error if run on machine with only one GPU.
+    - Fix code in the test.py file
 
 <!-- ---------------------------------------------- -->
+
+<details>
+  <summary>Instructions for preparing the dataset and training the model</summary>
+
 ## Dataset Preparation
 
 We provide dataset split in ```datasets/```. 
@@ -134,3 +126,5 @@ tensorboard --logdir release_mode
 <!-- ---------------------------------------------- -->
 ## Contact
 If you have any questions or suggestions about this paper, feel free to contact me (zengyh7@mail2.sysu.edu.cn).
+
+</details>
